@@ -14,7 +14,7 @@ is in an unsupported format version. The current format version described here i
 * `authors` _List\[Author\]_ A list of authors. The authors are the creators of the specifications and the primary points of contact.
 * `cite` _List\[CiteEntry\]_ A citation entry or list of citation entries.
 Each entry contains a mandatory `text` field and either one or both of `doi` and `url`.
-E.g. the citation for the model architecture and/or the training data used. is a Dict with the following keys:
+E.g. the citation for the model architecture and/or the training data used. is a Dict with the following keys: is a Dict with the following keys:
   * `text` _String_ 
   * `doi` _optional* String_ 
   * `url` _optional* String_ 
@@ -50,11 +50,9 @@ with open(filename, "rb") as f:
 
 
     * `tensorflow_version` _optional StrictVersion→String_ 
-* `attachments` _optional* Dict\[String, Union\[URI→String | List\[URI→String\]\]\]_ Dictionary of text keys and URI (or a list of URI) values to additional, relevant
-files. E.g. we can place a list of URIs under the `files` to list images and other files that are necessary for the
-documentation or for the model to run, these files will be included when generating the model package.
-* `config` _optional Dict\[Any, Any\]_ 
-A custom configuration field that can contain any other keys which are not defined above. It can be very specifc to a framework or specific tool. To avoid conflicted definitions, it is recommended to wrap configuration into a sub-field named with the specific framework or tool name.
+* `attachments` _optional* Dict\[String, Union\[URI→String | List\[URI→String\]\]\]_ Dictionary of text keys and URI (or a list of URI) values to additional, relevant files. E.g. we can place a list of URIs under the `files` to list images and other files that this resource depends on.
+* `badges` _optional List\[Badge\]_ a list of badges
+* `config` _optional Dict\[Any, Any\]_ A custom configuration field that can contain any keys. It can be very specific to a framework or specific tool. To avoid conflicted definitions, it is recommended to wrap configuration into a sub-field named with the specific framework or tool name.
 
 For example:
 ```yaml
@@ -77,10 +75,10 @@ config:
 
 * `covers` _optional List\[URI→String\]_ A list of cover images provided by either a relative path to the model folder, or a hyperlink starting with 'https'.Please use an image smaller than 500KB and an aspect ratio width to height of 2:1. The supported image formats are: 'jpg', 'png', 'gif'.
 * `dependencies` _optional Dependencies→String_ Dependency manager and dependency file, specified as `<dependency manager>:<relative path to file>`. For example: 'conda:./environment.yaml', 'maven:./pom.xml', or 'pip:./requirements.txt'
+* `download_url` _optional String_ recommended url to the zipped file if applicable
 * `framework` _optional String_ The deep learning framework of the source code. One of: scikit-learn, pytorch, tensorflow. This field is only required if the field `source` is present.
-* `git_repo` _optional String_ A url to the git repository, e.g. to Github or Gitlab.
-If the model is contained in a subfolder of a git repository, then a url to the exact folder
-(which contains the configuration yaml file) should be used.
+* `git_repo` _optional String_ A url to the git repository, e.g. to Github or Gitlab.If the model is contained in a subfolder of a git repository, then a url to the exact folder(which contains the configuration yaml file) should be used.
+* `icon` _optional String_ an icon for the resource
 * `inputs` _List\[InputTensor\]_ Describes the input tensors expected by this model. is a Dict with the following keys:
   * `axes` _Axes→String_ Axes identifying characters from: bitczyx. Same length and order as the axes in `shape`.
 
