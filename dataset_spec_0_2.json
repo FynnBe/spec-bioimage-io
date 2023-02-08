@@ -1,5 +1,5 @@
 {
-    "$ref": "#/definitions/RDF",
+    "$ref": "#/definitions/Dataset",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "Attachments": {
@@ -102,35 +102,7 @@
             ],
             "type": "object"
         },
-        "Maintainer": {
-            "additionalProperties": false,
-            "properties": {
-                "affiliation": {
-                    "title": "affiliation",
-                    "type": "string"
-                },
-                "email": {
-                    "title": "email",
-                    "type": "string"
-                },
-                "github_user": {
-                    "require": true,
-                    "title": "github_user",
-                    "type": "string"
-                },
-                "name": {
-                    "title": "name",
-                    "type": "string"
-                },
-                "orcid": {
-                    "minLength": 19,
-                    "title": "orcid",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RDF": {
+        "Dataset": {
             "additionalProperties": false,
             "properties": {
                 "attachments": {
@@ -298,6 +270,34 @@
                 "name",
                 "type"
             ],
+            "type": "object"
+        },
+        "Maintainer": {
+            "additionalProperties": false,
+            "properties": {
+                "affiliation": {
+                    "title": "affiliation",
+                    "type": "string"
+                },
+                "email": {
+                    "title": "email",
+                    "type": "string"
+                },
+                "github_user": {
+                    "require": true,
+                    "title": "github_user",
+                    "type": "string"
+                },
+                "name": {
+                    "title": "name",
+                    "type": "string"
+                },
+                "orcid": {
+                    "minLength": 19,
+                    "title": "orcid",
+                    "type": "string"
+                }
+            },
             "type": "object"
         }
     }

@@ -1,14 +1,13 @@
-# BioImage.IO Resource Description File Specification 0.2.3
-This specification defines the fields used in a general BioImage.IO-compliant resource description file (`RDF`).
-An RDF is stored as a YAML file and describes resources such as models, datasets, applications and notebooks. 
-Note that models are described with an extended Model RDF specification.
+# BioImage.IO Collection Resource Description File Specification 0.2.3
+This specification defines the fields used in a BioImage.IO-compliant resource description file (`RDF`) for describing collections of other resources.
+These fields are typically stored in a YAML file which we call Collection Resource Description File or `collection RDF`.
 
-The RDF contains mandatory and optional fields. In the following description, optional fields are indicated by 
-_optional_. _optional*_ with an asterisk indicates the field is optional depending on the value in another field.
-If no specialized RDF exists for the specified type (like model RDF for type='model') additional fields may be 
-specified.
+The collection RDF YAML file contains mandatory and optional fields. In the following description, optional fields are indicated by _optional_.
+_optional*_ with an asterisk indicates the field is optional depending on the value in another field.
 
 * <a id="format_version"></a>`format_version` _(required String)_ Version of the BioImage.IO Resource Description File Specification used.The current general format version described here is 0.2.3. Note: The general RDF format is not to be confused with specialized RDF format like the Model RDF format.
+* <a id="collection"></a>`collection` _(required List\[CollectionEntry\])_ Collection entries. Each entry needs to specify a valid RDF with an id. Each collection entry RDF is based on the collection RDF itself, updated by rdf_source content if rdf_source is specified, and updated by any fields specified directly in the entry. In this context 'update' refers to overwriting RDF root fields by name.Except for the `id` field, which appends to the collection RDF `id` such that full_collection_entry_id=<collection_id>/<entry_id>
+    1.  _(CollectionEntry)_   is a Dict with the following keys:
 * <a id="description"></a>`description` _(required String)_ A string containing a brief description.
 * <a id="name"></a>`name` _(required Name→String)_ name of the resource, a human-friendly name
 * <a id="attachments"></a>`attachments` _(optional Attachments)_ Additional unknown keys are allowed. Attachments is a Dict with the following keys:

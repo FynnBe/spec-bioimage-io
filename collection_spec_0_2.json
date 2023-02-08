@@ -1,5 +1,5 @@
 {
-    "$ref": "#/definitions/RDF",
+    "$ref": "#/definitions/Collection",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "Attachments": {
@@ -102,36 +102,8 @@
             ],
             "type": "object"
         },
-        "Maintainer": {
-            "additionalProperties": false,
-            "properties": {
-                "affiliation": {
-                    "title": "affiliation",
-                    "type": "string"
-                },
-                "email": {
-                    "title": "email",
-                    "type": "string"
-                },
-                "github_user": {
-                    "require": true,
-                    "title": "github_user",
-                    "type": "string"
-                },
-                "name": {
-                    "title": "name",
-                    "type": "string"
-                },
-                "orcid": {
-                    "minLength": 19,
-                    "title": "orcid",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RDF": {
-            "additionalProperties": false,
+        "Collection": {
+            "additionalProperties": true,
             "properties": {
                 "attachments": {
                     "$ref": "#/definitions/Attachments",
@@ -159,6 +131,14 @@
                         "type": "object"
                     },
                     "title": "cite",
+                    "type": "array"
+                },
+                "collection": {
+                    "items": {
+                        "$ref": "#/definitions/CollectionEntry",
+                        "type": "object"
+                    },
+                    "title": "collection",
                     "type": "array"
                 },
                 "config": {
@@ -293,11 +273,58 @@
                 }
             },
             "required": [
+                "collection",
                 "description",
                 "format_version",
                 "name",
                 "type"
             ],
+            "type": "object"
+        },
+        "CollectionEntry": {
+            "additionalProperties": true,
+            "properties": {
+                "rdf_source": {
+                    "anyOf": [
+                        {
+                            "title": "",
+                            "type": "string"
+                        },
+                        {
+                            "title": "",
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Maintainer": {
+            "additionalProperties": false,
+            "properties": {
+                "affiliation": {
+                    "title": "affiliation",
+                    "type": "string"
+                },
+                "email": {
+                    "title": "email",
+                    "type": "string"
+                },
+                "github_user": {
+                    "require": true,
+                    "title": "github_user",
+                    "type": "string"
+                },
+                "name": {
+                    "title": "name",
+                    "type": "string"
+                },
+                "orcid": {
+                    "minLength": 19,
+                    "title": "orcid",
+                    "type": "string"
+                }
+            },
             "type": "object"
         }
     }
